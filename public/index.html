@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TinyLink Dashboard</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <a class="brand" href="/">TinyLink</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h1>Create short link</h1>
+      <form id="createForm" onsubmit="return false;">
+        <div style="margin-top:12px">
+          <label>Long URL</label>
+          <input id="url" type="url" placeholder="https://example.com/long/path" />
+          <p id="urlError" class="muted" style="display:none"></p>
+        </div>
+
+        <div style="margin-top:12px">
+          <label>Custom code (optional, 6–8 alnum)</label>
+          <input id="code" type="text" placeholder="e.g., abc123" class="small" />
+          <p id="codeError" class="muted" style="display:none"></p>
+        </div>
+
+        <div style="margin-top:12px" class="row">
+          <button id="createBtn" class="button">Create</button>
+          <div id="createMsg" class="muted"></div>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Links</h2>
+      <!-- <div class="muted" style="margin-bottom:8px">Screenshot (local path): <span class="muted">/mnt/data/23bfc98c-2f28-449c-931e-65bda79fdbb0.png</span></div> -->
+
+      <input id="search" type="search" placeholder="search code or url" style="margin-bottom:12px" />
+
+      <div style="overflow-x:auto">
+        <table class="table" aria-live="polite">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Target</th>
+              <th id="sortClicks" style="cursor:pointer">Clicks ↑↓</th>
+              <th>Last clicked</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="linksContainer">
+            <!-- JS populates -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" style="display:none" class="toast"></div>
+
+  <script src="/static/js/main.js" defer></script>
+</body>
+</html>
